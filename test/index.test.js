@@ -45,3 +45,18 @@ test('logAction generates correct log string', () => {
   expect(result).toContain('User Alice performed login at');
   expect(result).toMatch(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
 });
+
+test('logAction handles missing action', () => {
+  const result = logAction('', 'Alice');
+  expect(result).toContain('User Alice performed  at');
+});
+
+test('logAction handles missing username', () => {
+  const result = logAction('login', '');
+  expect(result).toContain('User  performed login at');
+});
+
+test('logAction handles both empty strings', () => {
+  const result = logAction('', '');
+  expect(result).toContain('User  performed  at');
+});
