@@ -15,3 +15,15 @@ test('capitalizeWords handles special characters', () => {
 test('capitalizeWords handles single word', () => {
   expect(capitalizeWords('hello')).toBe('Hello');
 });
+
+test('filterActiveUsers filters active users correctly', () => {
+  const users = [
+    { name: 'Alice', isActive: true },
+    { name: 'Bob', isActive: false },
+    { name: 'Charlie', isActive: true }
+  ];
+  expect(filterActiveUsers(users)).toEqual([
+    { name: 'Alice', isActive: true },
+    { name: 'Charlie', isActive: true }
+  ]);
+});
