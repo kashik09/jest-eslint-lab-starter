@@ -39,3 +39,9 @@ test('filterActiveUsers handles all inactive users', () => {
 test('filterActiveUsers handles empty array', () => {
   expect(filterActiveUsers([])).toEqual([]);
 });
+
+test('logAction generates correct log string', () => {
+  const result = logAction('login', 'Alice');
+  expect(result).toContain('User Alice performed login at');
+  expect(result).toMatch(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
+});
