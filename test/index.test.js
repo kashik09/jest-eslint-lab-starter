@@ -27,3 +27,15 @@ test('filterActiveUsers filters active users correctly', () => {
     { name: 'Charlie', isActive: true }
   ]);
 });
+
+test('filterActiveUsers handles all inactive users', () => {
+  const users = [
+    { name: 'Bob', isActive: false },
+    { name: 'Dave', isActive: false }
+  ];
+  expect(filterActiveUsers(users)).toEqual([]);
+});
+
+test('filterActiveUsers handles empty array', () => {
+  expect(filterActiveUsers([])).toEqual([]);
+});
